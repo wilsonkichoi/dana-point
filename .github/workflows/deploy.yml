@@ -96,7 +96,7 @@ jobs:
   init-check:
     name: Init wizard self-check
     needs: genericity
-    if: hashFiles('.sekai-template') != ''
+    if: ${{ hashFiles('.sekai-template') != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5

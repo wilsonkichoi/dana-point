@@ -96,6 +96,7 @@ jobs:
   init-check:
     name: Init wizard self-check
     needs: genericity
+    if: hashFiles('.sekai-template') != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -116,7 +117,7 @@ jobs:
   deploy:
     name: Deploy to Pages
     needs: [build, init-check]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: ${{ always() && github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.build.result == 'success' && (needs.init-check.result == 'success' || needs.init-check.result == 'skipped') }}
     runs-on: ubuntu-latest
     # Write scopes live here only (see top-level note): actions/deploy-pages needs
     # id-token: write for OIDC and pages: write to publish.

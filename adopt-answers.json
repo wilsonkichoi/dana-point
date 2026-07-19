@@ -1,0 +1,14 @@
+{
+  "place": {
+    "name": "Dana Point",
+    "domain": "dana-point.42init.com",
+    "locale": "en"
+  },
+  "categories": "coastal-town",
+  "map": {
+    "center": [33.467, -117.698]
+  },
+  "links": {
+    "repo": "https://github.com/wilsonkichoi/dana-point"
+  }
+}
